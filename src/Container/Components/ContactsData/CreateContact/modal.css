@@ -1,0 +1,25 @@
+
+.form_container{
+    font-size: 14px;
+    font-weight: 500;
+    color: #344054;
+}
+
+.span_gradiant{
+    display: inline-block !important;
+    /* background-image: linear-gradient(to right, red , yellow); */
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+    height: 24px !important;
+    width: 24px !important;
+    border-radius: 50% !important;
+}
+
+
+.scroll_list{
+    overflow-y: auto;
+    height: 230px;
+
+}
+
+

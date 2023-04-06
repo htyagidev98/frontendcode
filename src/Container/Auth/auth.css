@@ -1,0 +1,91 @@
+.login_wrapper {
+  border: 1px solid gray;
+  border-radius: 6px;
+}
+
+.btn-black {
+  background-color: black !important;
+  color: white !important;
+}
+
+.forget_data {
+  display: flex;
+  justify-content: center !important;
+}
+
+.key_data span {
+  display: inline-block;
+  background-color: black;
+  border-radius: 50%;
+  height: 55px;
+  width: 55px;
+  color: white;
+}
+
+.common_auth_height_con {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.span_message {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: #000000;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+.input_email_control{
+  height: 40px;
+  width: 40px;
+  border-radius: 8px;
+  border: 2px solid #000000;
+  text-align:center;
+  font-weight: 900;
+
+}
+.input_email_control::-webkit-inner-spin-button, 
+.input_email_control::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+
+.check_email_otp{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.check_email_wrapper{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.signup_wrapper{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.email_verified_span_bg{
+  background-color: #D1FADF;
+  color: #039855;
+  font-size: 25px;
+}
+

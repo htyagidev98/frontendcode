@@ -1,0 +1,38 @@
+/* Sidebar css start */
+
+.Sidebar_Wrapper {
+    position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      background: #fff;
+      width: 180px;
+      padding: 20px;
+      border-right: 1px solid #ccc;
+  }
+  
+  
+  span.profile_img img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .menu{
+    list-style-type: none;
+    margin: 0;
+    
+  }
+  .menu > li > a {
+    padding: 4px 0;
+    font-size: 14px;
+  }
+  .menu_heading {
+    font-size: 16px;
+    color: #666;
+  }
+  span.menu_icon {
+    float: right;
+  }
+  
