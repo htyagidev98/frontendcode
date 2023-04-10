@@ -6,6 +6,7 @@ const initialState={
     reminderModalData:[],
     returnModalData:{},
     userDetails:{},
+    userTokenUuid:{},
 }
 
 export const ContactSlice=createSlice({
@@ -35,7 +36,15 @@ export const ContactSlice=createSlice({
 
         getOtp:(state, action)=>{
           state.userDetails= action.payload
+        },
+
+        getAuth:(state, action)=>{
+           state.userTokenUuid= action.payload
         }
+
+      
+
+
 
 
 
@@ -47,6 +56,6 @@ export const ContactSlice=createSlice({
 });
 
 
-export const {addContact, setToken,addReminderArray, getReturnReminderData, clearReturnModalData, getOtp} = ContactSlice.actions;
+export const {addContact, setToken,addReminderArray, getReturnReminderData, clearReturnModalData, getOtp, getAuth} = ContactSlice.actions;
 
 export default ContactSlice.reducer;

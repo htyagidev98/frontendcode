@@ -1,56 +1,74 @@
-import React, {useState} from "react";
-import { TbMessage2 } from "react-icons/tb";
+import React, { useState } from "react";
+import { TbCodeAsterix, TbMessage2 } from "react-icons/tb";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import { NavLink , useNavigate} from "react-router-dom";
-import { useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./auth.css";
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 const VerifyEmail = () => {
-const navigate= useNavigate();
+  const navigate= useNavigate();
+  const { userDetails } = useSelector((state) => state.contact);
+  const { info } = userDetails;
 
-  const{userDetails}= useSelector((state)=>state.contact);
-  const {otp, info}= userDetails;
-  const email=info?.accepted[0]
-  const num = otp;
-  const[data, setData]= useState(num)
-// :white_check_mark: get first digit of number as string
-const firstDigitStr = String(data)[0];
-const secDigitStr = String(data)[1];
-const thirdtDigitStr = String(data)[2];
-const fourthDigitStr = String(data)[3];
 
-const varifyOtp =async()=>{
-  try {
-    const res = await fetch("/otp/verification", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+  const email = info?.accepted[0];
+  const [data, setData] = useState({
+    firstDigit: "",
+    secondDigit: "",
+    thirdDigit: "",
+    fourthDigit: "",
+  })
 
-        email,
-        otp,
-      }),
 
+  const { firstDigit,
+    secondDigit,
+    thirdDigit,
+    fourthDigit } = data;
+
+
+
+
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setData((preval) => {
+      return {
+        ...preval,
+        [name]: value,
+      };
     });
-    const mainData= await res.json();
-    // console.log('main', mainData.responseData.data.email)
-    if(res.status===200){
-       navigate('/setnewpassword');
-    } else{
-      toast.error('Invalid Credential');
-    }
-   
-   
-   
-   
-  } catch (error) {
-    console.log('Error is', error);
+  };
 
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const { firstDigit, secondDigit, thirdDigit, fourthDigit } = data
+    const one = parseInt(firstDigit);
+    const two = parseInt(secondDigit);
+    const three = parseInt(thirdDigit);
+    const four = parseInt(fourthDigit);
+    const mainData = one + "" + two + "" + three + "" + four;
+    const otp = parseInt(mainData, 10);
+
+    try {
+      const res = await axios.post('/otp/verification', { email: email, otp: otp, })
+      // console.log(res.data);
+      if(res.status===200){
+          navigate('/setnewpassword');
+      } 
+    } catch (e) {
+      toast.error('Invalid otp')
+    }
+
+
+    // console.log('otp', otp)
   }
-}
-return (
+
+
+
+  return (
     <div>
       <section className="check_email_wrapper">
         <div className="row">
@@ -64,22 +82,23 @@ return (
                 </div>
                 <h5 className="mt-2 fw-bold">Check your email</h5>
                 <p>
-                  We sent a password reset link to <br /> <span>{email} </span>
+                  We sent a password reset link to <br /> olivia@untitledui.com
                 </p>
               </div>
               <div className="check_email_otp">
-                <input type="number" className="input_email_control" value={firstDigitStr} />
-                <input type="number" className="input_email_control" value={secDigitStr} />
-                <input type="number" className="input_email_control" value={thirdtDigitStr} />
-                <input type="number" className="input_email_control" value={fourthDigitStr}/>
+                <input type="number" name="firstDigit" className="input_email_control" value={firstDigit} onChange={handleInput} />
+                <input type="number" name="secondDigit" className="input_email_control" value={secondDigit} onChange={handleInput} />
+                <input type="number" name="thirdDigit" className="input_email_control" value={thirdDigit} onChange={handleInput} />
+                <input type="number" name="fourthDigit" className="input_email_control" value={fourthDigit} onChange={handleInput} />
               </div>
+
               <div className="button_style mt-4">
-                <button className="btn btn-dark w-100" onClick={varifyOtp}>Verify Otp</button>
+                <button className="btn btn-dark w-100" onClick={handleSubmit} >Verify Email</button>
               </div>
               <div className="d-flex justify-content-center">
                 <div className="d-flex mt-3">
                   <span className="me-2">Didn't receive the email?</span>
-                  <NavLink className="nav-link fw-bold" to={'/forgetpassword'}>
+                  <NavLink className="nav-link fw-bold">
                     Click to resend
                   </NavLink>
                 </div>

@@ -5,16 +5,17 @@ import { FcGoogle } from "react-icons/fc";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
-
+import {AiFillEye} from "react-icons/ai";
+import {BsEyeSlashFill} from "react-icons/bs"
 import "./auth.css";
-import { setToken } from "../Redux/Slices/ContactSlice";
+import { getAuth, setToken } from "../Redux/Slices/ContactSlice";
 
 const Login = () => {
   const [inputData, setInputData] = useState({
     email: "",
     password: "",
   });
-
+  const [show, setShow]= useState(true);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const Login = () => {
       };
     });
   };
-
+  const{password}= inputData;
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(inputData);
@@ -50,11 +51,11 @@ const Login = () => {
     
     const token = data.responseData.token;
     dispatch(setToken(token));
-
+    dispatch(getAuth(data.responseData));
     if (res.status === 422) {
       toast.error("invalid credential");
     } else if (res.status === 404 || res.status === 400) {
-      toast.error("User not found!");
+      toast.error("Email and Password Invalid!");
     } else if (res.status === 500) {
       toast.error("Internal server Error");
     } else {
@@ -81,7 +82,9 @@ const Login = () => {
                     <form onSubmit={(e) => handleSubmit(e)}>
                       <div className="form-group mb-3">
                         <label htmlFor="email">Email</label>
+                        
                         <input
+
                           type="email"
                           name="email"
                           id="email"
@@ -92,12 +95,15 @@ const Login = () => {
                           onChange={handleInput}
                           value={inputData.email}
                         />
+                       
+                        
                       </div>
 
                       <div className="form-group mb-3">
                         <label htmlFor="password">Password</label>
+                        <div className="parent_hide_show">
                         <input
-                          type="password"
+                          type={show ? "password":"text"}
                           name="password"
                           id="password"
                           className="form-control"
@@ -107,6 +113,8 @@ const Login = () => {
                           onChange={handleInput}
                           value={inputData.password}
                         />
+                         {password && <span className="child_span_style" onClick={()=>setShow(!show)}> {show? <AiFillEye />: <BsEyeSlashFill/> } </span>}
+                        </div>
                       </div>
 
                       <div className="user_check d-flex justify-content-between mt-3 mb-3">

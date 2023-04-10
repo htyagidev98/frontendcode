@@ -89,3 +89,20 @@
   font-size: 25px;
 }
 
+
+.parent_hide_show{
+   position: relative;
+}
+
+.child_span_style{
+  position: absolute;
+  right: 10px;
+  top: 0;
+  font-size: 20px;
+  cursor: pointer; 
+}
+
+.child_span_style:hover{
+  color: blue;
+}
+

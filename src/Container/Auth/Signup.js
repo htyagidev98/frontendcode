@@ -1,11 +1,13 @@
-import React  from "react";
+import React, {useState}  from "react";
 import {  NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SignUpmage from "../assets/images/Section.png";
 import {signUpSchema} from './RegistrationSchema'
 import {useFormik} from 'formik';
-
+import {AiFillEye} from "react-icons/ai";
+import {BsEyeSlashFill} from "react-icons/bs"
+import "./auth.css"
 const initialValues={
   name:"",
   email:"",
@@ -14,8 +16,12 @@ const initialValues={
 
 
 
+
+
 const Signup = () => {
-  // const[data, setData]= useState()
+  const[data, setData]= useState()
+  const{password}=initialValues;
+  const [show, setShow]= useState(true);
   const navigate=useNavigate();
   // console.log('d', data)
   // const [inputData, setInputData] = useState({
@@ -160,9 +166,9 @@ const Signup = () => {
                           <label htmlFor="password">Password</label>
                             <span className="">*</span>
                             </span>
-                            
+                            <div className="parent_hide_show">
                             <input
-                              type="password"
+                               type={show ? "password":"text"}
                               name="password"
                               id="password"
                               className="form-control"
@@ -173,7 +179,9 @@ const Signup = () => {
                               value={values.password}
                               onBlur={handleBlur}
                             />
-                            
+                             { <span className="child_span_style" onClick={()=>setShow(!show)}> {show? <AiFillEye />: <BsEyeSlashFill/> } </span>}
+                          </div>
+
                           </div>
                           {
                             errors.password && touched.password? <p className="text-danger">{errors.password} </p>:null
