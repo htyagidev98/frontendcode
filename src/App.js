@@ -15,23 +15,8 @@ import EmailVerified from "./Container/Auth/EmailVerified";
 import PasswordReset from "./Container/Auth/PasswordReset";
 import SetNewPassword from "./Container/Auth/SetNewPassword";
 
-// const getLocalItems = () => {
-//   const list = localStorage.getItem("lists");
-//   if (list) {
-//     return JSON.parse(localStorage.getItem("lists"));
-//   } else {
-//     return [];
-//   }
-// };
-
 const App = () => {
   const { token } = useSelector((state) => state.contact);
-  // const [data, setData] = useState(getLocalItems());
-  // useEffect(() => {
-  //   setData(token);
-  //   localStorage.setItem("lists", JSON.stringify(data));
-  // }, [data]);
-
   useEffect(()=>{
     localStorage.setItem('list',JSON.stringify(token));
   }, [token]);

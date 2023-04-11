@@ -15,8 +15,6 @@ const initialValues = {
 }
 
 const Signup = () => {
-  const [data, setData] = useState()
-  const { password } = initialValues;
   const [show, setShow] = useState(true);
   const navigate = useNavigate();
   const { values, errors, handleBlur, touched, handleChange, handleSubmit } = useFormik({
@@ -45,29 +43,6 @@ const Signup = () => {
       }
     }
   })
-
-
-
-  // const handleInput = (e) => {
-  //   const { name, value } = e.target;
-  //   setInputData((preval) => {
-  //     return {
-  //       ...preval,
-  //       [name]: value,
-  //     };
-  //   });
-  // };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setChunkData(inputData);
-  //   toast("Registration Successfully:)");
-  //   setInputData({
-  //     name: "",
-  //     email: "",
-  //     password: "",
-  //   });
-  // };
 
   return (
     <div className="signup_wrapper">
@@ -108,7 +83,6 @@ const Signup = () => {
                               id="name"
                               className="form-control"
                               placeholder="Enter  name"
-                              // required
                               autoComplete="off"
                               onChange={handleChange}
                               value={values.name}
@@ -132,7 +106,6 @@ const Signup = () => {
                               id="email"
                               className="form-control"
                               placeholder="Enter Email"
-                              // required
                               autoComplete="off"
                               onChange={handleChange}
                               value={values.email}
@@ -157,13 +130,12 @@ const Signup = () => {
                                 id="password"
                                 className="form-control"
                                 placeholder="Enter Password"
-                                // required
                                 autoComplete="off"
                                 onChange={handleChange}
                                 value={values.password}
                                 onBlur={handleBlur}
                               />
-                              {<span className="child_span_style" onClick={() => setShow(!show)}> {show ? <AiFillEye /> : <BsEyeSlashFill />} </span>}
+                              {values.password && <span className="child_span_style" onClick={() => setShow(!show)}> {show ? <AiFillEye /> : <BsEyeSlashFill />} </span>}
                             </div>
 
                           </div>

@@ -40,8 +40,6 @@ const ForgetPassword = () => {
 
       });
       const mainData = await res.json();
-      // console.log('main', mainData.responseData.otp)
-
       if (res.status === 200) {
         dispatch(getOtp(mainData.responseData));
 

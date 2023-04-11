@@ -4,17 +4,14 @@ import profileImage from '../assets/images/ByeWind.png'
 import {FaAngleDown} from 'react-icons/fa';
 import {FcFolder, FcReadingEbook} from 'react-icons/fc'
 import {AiOutlineCheck} from 'react-icons/ai'
+import {BiLogOutCircle} from 'react-icons/bi'
 import './sidebar.css';
 const Sidebar = () => {
-    // state for list one
     const [ListShowHide, setListShowHide]= useState(false);
-    // state for list two
     const [ListTShowHide, setListTShowHide]= useState(false);
-    // function for list one
     const hideShow=()=>{
         setListShowHide(!ListShowHide);
     }
-    // function for list two
 
     const hideShowTwo=()=>{
         setListTShowHide(!ListTShowHide);
@@ -63,6 +60,14 @@ const Sidebar = () => {
             </li>
             <li><NavLink to='' className='nav-link' ><AiOutlineCheck /> Tasks </NavLink> </li>
         </ul>
+
+        <div className="logout_button mt-5">
+            <NavLink to={'/'} className="/" >
+            <button className=" btn btn-success btn-sm mt-3">
+               Logout <BiLogOutCircle className='logout_icon_style' />
+            </button>
+            </NavLink>
+        </div>
 
       
 
