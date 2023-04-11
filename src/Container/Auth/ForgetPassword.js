@@ -4,11 +4,11 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { BiArrowBack } from 'react-icons/bi'
 import './auth.css';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; 
-import {useDispatch} from 'react-redux';
+import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from 'react-redux';
 import { getOtp } from '../Redux/Slices/ContactSlice';
 const ForgetPassword = () => {
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [inputData, setInputData] = useState({
     email: "",
   })
@@ -39,17 +39,17 @@ const dispatch = useDispatch();
         }),
 
       });
-      const mainData= await res.json();
+      const mainData = await res.json();
       // console.log('main', mainData.responseData.otp)
-     
+
       if (res.status === 200) {
         dispatch(getOtp(mainData.responseData));
-        
+
         toast.success('verified success');
         setTimeout(() => {
           navigate('/verifyemail')
         }, [2000])
-       
+
       } else if (res.status === 422) {
         toast.error('Invalid Credential')
       } else if (res.status === 500) {
@@ -57,14 +57,10 @@ const dispatch = useDispatch();
       } else if (res.status === 400) {
         toast.error('user not found');
       }
-
-     
     } catch (error) {
       console.log('Error is', error);
 
     }
-
-
   };
   return (
     <div>

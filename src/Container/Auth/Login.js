@@ -5,8 +5,8 @@ import { FcGoogle } from "react-icons/fc";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
-import {AiFillEye} from "react-icons/ai";
-import {BsEyeSlashFill} from "react-icons/bs"
+import { AiFillEye } from "react-icons/ai";
+import { BsEyeSlashFill } from "react-icons/bs"
 import "./auth.css";
 import { getAuth, setToken } from "../Redux/Slices/ContactSlice";
 
@@ -15,7 +15,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [show, setShow]= useState(true);
+  const [show, setShow] = useState(true);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -29,14 +29,10 @@ const Login = () => {
       };
     });
   };
-  const{password}= inputData;
+  const { password } = inputData;
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(inputData);
-
     const { email, password } = inputData;
-    //  toast.success('Registration successful');
-
     const res = await fetch("/login", {
       method: "POST",
       headers: {
@@ -48,7 +44,7 @@ const Login = () => {
       }),
     });
     const data = await res.json();
-    
+
     const token = data.responseData.token;
     dispatch(setToken(token));
     dispatch(getAuth(data.responseData));
@@ -82,9 +78,7 @@ const Login = () => {
                     <form onSubmit={(e) => handleSubmit(e)}>
                       <div className="form-group mb-3">
                         <label htmlFor="email">Email</label>
-                        
                         <input
-
                           type="email"
                           name="email"
                           id="email"
@@ -95,34 +89,29 @@ const Login = () => {
                           onChange={handleInput}
                           value={inputData.email}
                         />
-                       
-                        
                       </div>
-
                       <div className="form-group mb-3">
                         <label htmlFor="password">Password</label>
                         <div className="parent_hide_show">
-                        <input
-                          type={show ? "password":"text"}
-                          name="password"
-                          id="password"
-                          className="form-control"
-                          placeholder="Enter Password"
-                          required
-                          autoComplete="off"
-                          onChange={handleInput}
-                          value={inputData.password}
-                        />
-                         {password && <span className="child_span_style" onClick={()=>setShow(!show)}> {show? <AiFillEye />: <BsEyeSlashFill/> } </span>}
+                          <input
+                            type={show ? "password" : "text"}
+                            name="password"
+                            id="password"
+                            className="form-control"
+                            placeholder="Enter Password"
+                            required
+                            autoComplete="off"
+                            onChange={handleInput}
+                            value={inputData.password}
+                          />
+                          {password && <span className="child_span_style" onClick={() => setShow(!show)}> {show ? <AiFillEye /> : <BsEyeSlashFill />} </span>}
                         </div>
                       </div>
-
                       <div className="user_check d-flex justify-content-between mt-3 mb-3">
                         <div className="">
                           <input type="checkbox" name="" id="" />
                           <span className="ms-4">Remember for 30 days</span>
                         </div>
-
                         <div className="forget_pass">
                           <span>
                             <NavLink
@@ -134,21 +123,18 @@ const Login = () => {
                           </span>
                         </div>
                       </div>
-
                       <button
                         className="btn btn-black d-block w-100 mt-2 mb-2"
                         type="submit"
                       >
                         Sign in
                       </button>
-
                       <button
                         className="btn btn-success d-block w-100 mt-2 mb-2"
                         type="submit"
                       >
                         <FcGoogle /> Sign in with Google
                       </button>
-
                       <div className="login_footer">
                         <div className="footer_sec d-flex justify-content-center">
                           <span>Don’t have an account? </span>

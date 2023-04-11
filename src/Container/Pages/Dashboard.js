@@ -3,8 +3,6 @@ import { NavLink } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 
 const Dashboard = () => {
-
-
   return (
     <div className="Home_wrapper">
      <Sidebar />

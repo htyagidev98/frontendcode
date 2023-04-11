@@ -2,7 +2,6 @@
   border: 1px solid gray;
   border-radius: 6px;
 }
-
 .btn-black {
   background-color: black !important;
   color: white !important;
@@ -12,7 +11,6 @@
   display: flex;
   justify-content: center !important;
 }
-
 .key_data span {
   display: inline-block;
   background-color: black;
@@ -21,14 +19,12 @@
   width: 55px;
   color: white;
 }
-
 .common_auth_height_con {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .span_message {
   display: inline-block;
   height: 40px;
@@ -41,8 +37,6 @@
   align-items: center;
   cursor: pointer;
 }
-
-
 .input_email_control{
   height: 40px;
   width: 40px;
@@ -50,7 +44,6 @@
   border: 2px solid #000000;
   text-align:center;
   font-weight: 900;
-
 }
 .input_email_control::-webkit-inner-spin-button, 
 .input_email_control::-webkit-outer-spin-button { 
@@ -59,7 +52,6 @@
     appearance: none;
     margin: 0; 
 }
-
 
 .check_email_otp{
   display: flex;
@@ -74,8 +66,6 @@
     align-items: center;
     flex-direction: column;
 }
-
-
 .signup_wrapper{
   height: 100vh;
   display: flex;
@@ -88,12 +78,9 @@
   color: #039855;
   font-size: 25px;
 }
-
-
 .parent_hide_show{
    position: relative;
 }
-
 .child_span_style{
   position: absolute;
   right: 10px;
@@ -101,7 +88,6 @@
   font-size: 20px;
   cursor: pointer; 
 }
-
 .child_span_style:hover{
   color: blue;
 }
